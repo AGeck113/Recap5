@@ -1,20 +1,30 @@
 import Image from "next/image";
+import Link from "next/link";
+import FavButton from "../FavButton";
 export default function ArtPiecePreview({
   slug,
   name,
   imageSource,
+  artist,
   width,
   height,
-  artist,
+  isFavorite,
 }) {
   return (
     <>
       <li key={slug}>
         <h2>{name}</h2>
         <p>{artist}</p>
-        <Image src={imageSource} alt={name} width={width} height={height} />
+        <FavButton slug={slug} isFavorite={isFavorite} />
+        <Image
+          src={imageSource}
+          alt={name}
+          width={width * 0.2}
+          height={height * 0.2}
+        />
+        <br></br>
+        <Link href={`/artPieces/${slug}`}>Show me more!</Link>
       </li>
-      ; ;
     </>
   );
 }

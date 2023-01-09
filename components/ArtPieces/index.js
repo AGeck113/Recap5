@@ -13,6 +13,7 @@ export default function ArtPieces({ pieces }) {
             imageSource={piece.imageSource}
             width={piece.dimensions.width}
             height={piece.dimensions.height}
+            isFavorite={piece.isFavorite}
           />
         );
       })}

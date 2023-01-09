@@ -27,13 +27,17 @@ export default function App({ Component, pageProps }) {
     fetcher,
     {
       onSuccess: (data) => {
-        updateAllPieces(data);
+        updateAllPieces(
+          data.map((piece) => {
+            return { ...piece, isFavorite: false };
+          })
+        );
       },
     }
   );
   if (isLoading) return <div>Loading</div>;
   if (error) return <div>Error</div>;
-
+  console.log(allPieces);
   return (
     <>
       <GlobalStyle />

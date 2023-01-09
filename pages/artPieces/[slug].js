@@ -11,6 +11,5 @@ export default function Details() {
   const activeSlug = allPieces.filter((piece) => {
     return slug === piece.slug;
   })[0];
-  console.log(activeSlug);
   return <ArtPieceDetails activeSlug={activeSlug} />;
 }
