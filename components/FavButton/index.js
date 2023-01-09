@@ -11,7 +11,7 @@ export default function FavButton({ slug, isFavorite }) {
     <button
       type="button"
       onClick={() => {
-        setFavorite(
+        updateAllPieces(
           allPieces.map((piece) => {
             return piece.slug === slug
               ? { ...piece, isFavorite: !piece.isFavorite }
