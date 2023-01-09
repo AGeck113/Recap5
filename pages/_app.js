@@ -2,6 +2,7 @@ import { atom, useAtom } from "jotai";
 import { SWRConfig } from "swr";
 import GlobalStyle from "../styles";
 import useSWR from "swr";
+import Layout from "../components/Layout/Layout";
 
 const fetcher = async (url) => {
   const res = await fetch(url);
@@ -16,6 +17,7 @@ const fetcher = async (url) => {
   return res.json();
 };
 export const all = atom([]);
+export const page = atom("spotlight");
 
 export default function App({ Component, pageProps }) {
   const [allPieces, updateAllPieces] = useAtom(all);
@@ -36,7 +38,9 @@ export default function App({ Component, pageProps }) {
     <>
       <GlobalStyle />
       <SWRConfig value={{ fetcher: fetcher }}>
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </SWRConfig>
     </>
   );
