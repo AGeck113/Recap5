@@ -1,22 +1,18 @@
 import { atom, useAtom } from "jotai";
 import Link from "next/link";
 import useSWR from "swr";
+import Spotlight from "../components/Spotlight/Spotlight";
+import { all } from "./_app";
 
-export const all = atom([]);
-
-export default function HomePage() {
-  const [allPieces, updateAllPieces] = useAtom(all);
-
+export default function SpotLightPage() {
   // const [page, setPage] = useState("spot");
-  const { data, error, isLoading } = useSWR(
-    "https://example-apis.vercel.app/api/art"
-  );
-  if (isLoading) return <div>Loading</div>;
-  if (error) return <div>Error</div>;
-  updateAllPieces(data);
+  const [allPieces, updateAllPieces] = useAtom(all);
+  const randomPiece = allPieces[Math.floor(Math.random() * allPieces.length)];
+
   return (
     <>
       <h1>Art Attack!</h1>
+      <Spotlight randomPiece={randomPiece} />
       <Link href="/artPieces/">Art</Link>
     </>
   );
