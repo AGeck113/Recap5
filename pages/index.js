@@ -1,6 +1,7 @@
 import { atom, useAtom } from "jotai";
 import Link from "next/link";
 import useSWR from "swr";
+import Navigation from "../components/Navigation";
 import Spotlight from "../components/Spotlight/Spotlight";
 import { all } from "./_app";
 
